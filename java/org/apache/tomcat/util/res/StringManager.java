@@ -79,7 +79,7 @@ public class StringManager {
             if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage())) {
                 locale = Locale.ROOT;
             }
-            bnd = ResourceBundle.getBundle(bundleName, locale);
+            bnd = ResourceBundle.getBundle(bundleName, locale, new UTF8Control());
         } catch (MissingResourceException ex) {
             // Try from the current loader (that's the case for trusted apps)
             // Should only be required if using a TC5 style classloader structure
@@ -87,7 +87,7 @@ public class StringManager {
             ClassLoader cl = Thread.currentThread().getContextClassLoader();
             if (cl != null) {
                 try {
-                    bnd = ResourceBundle.getBundle(bundleName, locale, cl);
+                    bnd = ResourceBundle.getBundle(bundleName, locale, cl, new UTF8Control());
                 } catch (MissingResourceException ex2) {
                     // Ignore
                 }
