@@ -771,7 +771,7 @@ public final class Mapper {
         mappingData.host = mappedHost.object;
 
         if (uri.isNull()) {
-            // Can't map context or wrapper without a uri
+            // Can't map context or wrapper without an uri
             return;
         }
 

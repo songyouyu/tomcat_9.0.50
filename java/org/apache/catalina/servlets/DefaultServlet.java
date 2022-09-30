@@ -856,7 +856,7 @@ public class DefaultServlet extends HttpServlet {
         boolean isError = DispatcherType.ERROR == request.getDispatcherType();
 
         if (!resource.exists()) {
-            // Check if we're included so we can return the appropriate
+            // Check if we're included, so we can return the appropriate
             // missing resource name in the error
             String requestUri = (String) request.getAttribute(
                     RequestDispatcher.INCLUDE_REQUEST_URI);
@@ -880,7 +880,7 @@ public class DefaultServlet extends HttpServlet {
         }
 
         if (!resource.canRead()) {
-            // Check if we're included so we can return the appropriate
+            // Check if we're included, so we can return the appropriate
             // missing resource name in the error
             String requestUri = (String) request.getAttribute(
                     RequestDispatcher.INCLUDE_REQUEST_URI);

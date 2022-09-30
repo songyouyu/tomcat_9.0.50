@@ -133,7 +133,7 @@ public class Acceptor<U> implements Runnable {
                     ExceptionUtils.handleThrowable(t);
                     String msg = sm.getString("endpoint.accept.fail");
                     // APR specific.
-                    // Could push this down but not sure it is worth the trouble.
+                    // Could push this down but not sure if it is worth the trouble.
                     if (t instanceof Error) {
                         Error e = (Error) t;
                         if (e.getError() == 233) {

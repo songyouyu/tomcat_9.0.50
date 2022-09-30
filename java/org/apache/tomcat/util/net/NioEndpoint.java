@@ -306,12 +306,16 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel,SocketChannel> 
             initializeConnectionLatch();
 
             // Start poller thread
+            // selector, 处理 Socket 请求(从 events 队列中获取), 交给 Processor, Processor 接收来自 Endpoint 的 Socket，读取字节流解析成
+            // Tomcat Request 和 Response 对象，并通过 Adapter 将其提交到容器处理
             poller = new Poller();
             Thread pollerThread = new Thread(poller, getName() + "-Poller");
             pollerThread.setPriority(threadPriority);
             pollerThread.setDaemon(true);
             pollerThread.start();
 
+            // Acceptor 用于监听 Socket 连接请求
+            // 添加到 Poller 的 events 队列中.
             startAcceptorThread();
         }
     }

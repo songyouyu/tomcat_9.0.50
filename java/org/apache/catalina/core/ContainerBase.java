@@ -915,7 +915,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
         }
 
         // Start our child containers, if any
-        Container children[] = findChildren();
+        Container[] children = findChildren();
         List<Future<Void>> results = new ArrayList<>();
         for (Container child : children) {
             results.add(startStopExecutor.submit(new StartChild(child)));

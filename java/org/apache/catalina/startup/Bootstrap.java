@@ -248,7 +248,7 @@ public final class Bootstrap {
      * @throws Exception Fatal initialization error
      */
     public void init() throws Exception {
-
+        // 初始化类加载器
         initClassLoaders();
 
         Thread.currentThread().setContextClassLoader(catalinaLoader);
@@ -259,6 +259,7 @@ public final class Bootstrap {
         if (log.isDebugEnabled()) {
             log.debug("Loading startup class");
         }
+        // call Catalina Constructor()
         Class<?> startupClass = catalinaLoader.loadClass("org.apache.catalina.startup.Catalina");
         Object startupInstance = startupClass.getConstructor().newInstance();
 
@@ -284,7 +285,7 @@ public final class Bootstrap {
      */
     private void load(String[] arguments) throws Exception {
 
-        // Call the load() method
+        // Call the Catalina load() method
         String methodName = "load";
         Object param[];
         Class<?> paramTypes[];
